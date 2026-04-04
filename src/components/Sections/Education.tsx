@@ -1,5 +1,5 @@
 import React from "react";
-import { GraduationCap, Landmark, Calendar, Award } from "lucide-react";
+import { GraduationCap, Landmark, Award } from "lucide-react";
 
 interface EducationEntry {
   degree: string;
