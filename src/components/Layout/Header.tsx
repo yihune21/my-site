@@ -44,13 +44,13 @@ const Header: React.FC = () => {
         <button
           onClick={toggleDark}
           aria-label="Toggle dark mode"
-          className={`p-1 rounded transition-all hover:scale-110 ${
+          className={`p-1.5 rounded-md transition-all hover:scale-105 border shadow-sm ${
             isDark
-              ? "text-yellow-300 hover:text-yellow-100"
-              : "text-gray-400 hover:text-white"
+              ? "text-yellow-300 hover:text-yellow-100 bg-gray-700 border-gray-600"
+              : "text-zinc-700 hover:text-zinc-900 bg-zinc-200 border-zinc-300"
           }`}
         >
-          {isDark ? <Sun size={15} /> : <Moon size={15} />}
+          {isDark ? <Sun size={20} /> : <Moon size={20} />}
         </button>
 
         <span className="text-xs font-mono text-gray-300">{currentTime}</span>

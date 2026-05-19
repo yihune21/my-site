@@ -7,7 +7,11 @@ interface FolderIconProps {
   onClick?: () => void;
 }
 
-const FolderIcon: React.FC<FolderIconProps> = ({ name, itemCount, onClick }) => {
+const FolderIcon: React.FC<FolderIconProps> = ({
+  name,
+  itemCount,
+  onClick,
+}) => {
   return (
     <div
       onClick={onClick}
@@ -21,9 +25,11 @@ const FolderIcon: React.FC<FolderIconProps> = ({ name, itemCount, onClick }) => 
           className="fill-mint-500/20 stroke-[1.5]"
         />
       </div>
-      <span className="text-[12px] text-center font-medium mt-1 px-1.5 rounded-sm truncate w-full transition-colors
+      <span
+        className="text-[12px] text-center font-medium mt-1 px-1.5 rounded-sm truncate w-full transition-colors
                        text-gray-800 group-hover:bg-blue-600 group-hover:text-white
-                       dark:text-dark-text dark:group-hover:bg-blue-700 dark:group-hover:text-white">
+                       dark:text-dark-text dark:group-hover:bg-blue-700 dark:group-hover:text-white"
+      >
         {name}
       </span>
       {itemCount !== undefined && (

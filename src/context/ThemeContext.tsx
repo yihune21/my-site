@@ -17,7 +17,7 @@ export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({
 }) => {
   const [isDark, setIsDark] = useState<boolean>(() => {
     const stored = localStorage.getItem("mint-theme");
-    return stored ? stored === "dark" : false;
+    return stored ? stored === "dark" : true;
   });
 
   useEffect(() => {

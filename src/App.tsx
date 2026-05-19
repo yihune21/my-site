@@ -8,6 +8,8 @@ import About from "./components/Sections/About";
 import Projects from "./components/Sections/Project";
 import Experience from "./components/Sections/Experience";
 import Education from "./components/Sections/Education";
+import Skills from "./components/Sections/Skills";
+import Contact from "./components/Sections/Contact";
 import { ChevronLeft, ChevronRight, Home } from "lucide-react";
 import { useNavigate, useLocation } from "react-router-dom";
 
@@ -17,6 +19,8 @@ const pathLabels: Record<string, string> = {
   "/projects": "home / user / projects",
   "/experience": "home / user / experience",
   "/education": "home / user / education",
+  "/skills": "home / user / skills",
+  "/contact": "home / user / contact",
 };
 
 const HomeView: React.FC = () => {
@@ -43,6 +47,16 @@ const HomeView: React.FC = () => {
           name="Education"
           itemCount={2}
           onClick={() => navigate("/education")}
+        />
+        <FolderIcon
+          name="Skills"
+          itemCount={5}
+          onClick={() => navigate("/skills")}
+        />
+        <FolderIcon
+          name="Contact"
+          itemCount={2}
+          onClick={() => navigate("/contact")}
         />
       </div>
       <About />
@@ -138,20 +152,33 @@ const App: React.FC = () => {
                 </div>
               }
             />
+            <Route
+              path="/skills"
+              element={
+                <div className="flex-1 overflow-y-auto p-8">
+                  <Skills />
+                </div>
+              }
+            />
+            <Route
+              path="/contact"
+              element={
+                <div className="flex-1 overflow-y-auto p-8">
+                  <Contact />
+                </div>
+              }
+            />
             <Route path="*" element={<Navigate to="/" replace />} />
           </Routes>
         </section>
       </main>
 
       <footer
-        className="h-7 border-t flex items-center px-4 text-[11px] justify-between
+        className="h-7 border-t flex items-center justify-center px-4 text-[11px]
                          bg-[#f0f0f0] border-nemo-border text-gray-500
                          dark:bg-dark-surface-2 dark:border-dark-border dark:text-dark-text-muted"
       >
-        <span>+251-931998883</span>
-        <span className="font-semibold text-mint-600 tracking-tighter">
-          yihunezewdie23@gmail.com
-        </span>
+        <span>{new Date().getFullYear()} made by Yihune Zewdie</span>
       </footer>
     </div>
   );

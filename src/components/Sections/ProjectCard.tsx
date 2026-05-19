@@ -9,6 +9,7 @@ interface ProjectCardProps {
     githubUrl?: string;
     liveUrl?: string;
   };
+  onClick: () => void;
 }
 const GithubIcon = ({ size = 18 }: { size?: number }) => (
   <svg
@@ -26,17 +27,18 @@ const GithubIcon = ({ size = 18 }: { size?: number }) => (
   </svg>
 );
 
-const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
+const ProjectCard: React.FC<ProjectCardProps> = ({ project, onClick }) => {
   return (
     <div
-      className="group border rounded-lg flex flex-col overflow-hidden transition-all
-                    bg-white border-gray-200 hover:border-blue-400 hover:shadow-md
-                    dark:bg-dark-surface dark:border-dark-border-soft dark:hover:border-blue-500 dark:hover:shadow-lg"
+      onClick={onClick}
+      className="group border rounded-lg flex flex-col overflow-hidden transition-all cursor-pointer
+                    bg-white border-gray-200 hover:border-zinc-400 hover:shadow-md
+                    dark:bg-dark-surface dark:border-dark-border-soft dark:hover:border-zinc-500 dark:hover:shadow-lg"
     >
       {/* Thumbnail */}
       <div
         className="h-32 flex items-center justify-center border-b transition-colors
-                      bg-gray-50 border-gray-100 group-hover:bg-blue-50
+                      bg-gray-50 border-gray-100 group-hover:bg-zinc-100
                       dark:bg-dark-surface-2 dark:border-dark-border dark:group-hover:bg-dark-hover"
       >
         <Folder

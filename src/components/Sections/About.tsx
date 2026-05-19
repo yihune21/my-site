@@ -36,20 +36,46 @@ const LinkedinIcon = ({ size = 18 }: { size?: number }) => (
 );
 
 const About: React.FC = () => {
-  const fullText =
-    "React, Nextjs, Node.js, TypeScript, Python, Golang and Odoo development.";
+  const words = [
+    "Python",
+    "Java",
+    "Golang",
+    "JavaScript",
+    "TypeScript",
+    "React",
+    "Node.js",
+    "Django",
+    "Odoo"
+  ];
   const [typedText, setTypedText] = useState("");
+  const [wordIndex, setWordIndex] = useState(0);
+  const [isDeleting, setIsDeleting] = useState(false);
 
   useEffect(() => {
-    let currentLength = 0;
-    const timer = setInterval(() => {
-      currentLength++;
-      setTypedText(fullText.substring(0, currentLength));
-      if (currentLength >= fullText.length) clearInterval(timer);
-    }, 10);
+    const currentWord = words[wordIndex];
+    let typingSpeed = isDeleting ? 50 : 100;
 
-    return () => clearInterval(timer);
-  }, []);
+    if (!isDeleting && typedText === currentWord) {
+      // Wait 3 seconds before deleting
+      const pauseTimer = setTimeout(() => setIsDeleting(true), 3000);
+      return () => clearTimeout(pauseTimer);
+    } else if (isDeleting && typedText === "") {
+      setIsDeleting(false);
+      setWordIndex((prev) => (prev + 1) % words.length);
+      const pauseTimer = setTimeout(() => {}, 500);
+      return () => clearTimeout(pauseTimer);
+    }
+
+    const timer = setTimeout(() => {
+      setTypedText((prev) =>
+        isDeleting
+          ? currentWord.substring(0, prev.length - 1)
+          : currentWord.substring(0, prev.length + 1)
+      );
+    }, typingSpeed);
+
+    return () => clearTimeout(timer);
+  }, [typedText, isDeleting, wordIndex]);
 
   return (
     <div className="py-6 sm:px-2 md:px-0 animate-fade-in">
@@ -103,8 +129,8 @@ const About: React.FC = () => {
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center gap-2 px-4 py-2 rounded-md transition-all font-sans font-medium text-sm
-                       bg-blue-50 hover:bg-blue-100 text-blue-700 border border-blue-200
-                       dark:bg-dark-surface dark:hover:bg-dark-hover dark:border-dark-border-soft dark:text-blue-400"
+                       bg-zinc-100 hover:bg-zinc-200 text-zinc-800 border border-zinc-300
+                       dark:bg-dark-surface dark:hover:bg-dark-hover dark:border-dark-border-soft dark:text-zinc-300"
           >
             <LinkedinIcon size={18} /> LinkedIn
           </a>
