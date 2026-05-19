@@ -4,8 +4,14 @@ import { Mail, MessageSquare, Send, ExternalLink } from "lucide-react";
 const Contact: React.FC = () => {
   const [method, setMethod] = useState<"email" | "dm">("email");
 
-  const [formData, setFormData] = useState({ name: "", email: "", message: "" });
-  const [status, setStatus] = useState<"idle" | "sending" | "success" | "error">("idle");
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    message: "",
+  });
+  const [status, setStatus] = useState<
+    "idle" | "sending" | "success" | "error"
+  >("idle");
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
@@ -32,9 +38,10 @@ const Contact: React.FC = () => {
         <button
           onClick={() => setMethod("email")}
           className={`flex-1 py-2 text-sm font-medium rounded-md transition-all flex items-center justify-center gap-2
-            ${method === "email"
-              ? "bg-white dark:bg-dark-surface text-mint-600 shadow-sm"
-              : "text-gray-500 dark:text-dark-text-muted hover:text-gray-700 dark:hover:text-dark-text"
+            ${
+              method === "email"
+                ? "bg-white dark:bg-dark-surface text-mint-600 shadow-sm"
+                : "text-gray-500 dark:text-dark-text-muted hover:text-gray-700 dark:hover:text-dark-text"
             }`}
         >
           <Mail size={16} /> Send Email
@@ -42,9 +49,10 @@ const Contact: React.FC = () => {
         <button
           onClick={() => setMethod("dm")}
           className={`flex-1 py-2 text-sm font-medium rounded-md transition-all flex items-center justify-center gap-2
-            ${method === "dm"
-              ? "bg-white dark:bg-dark-surface text-mint-600 shadow-sm"
-              : "text-gray-500 dark:text-dark-text-muted hover:text-gray-700 dark:hover:text-dark-text"
+            ${
+              method === "dm"
+                ? "bg-white dark:bg-dark-surface text-mint-600 shadow-sm"
+                : "text-gray-500 dark:text-dark-text-muted hover:text-gray-700 dark:hover:text-dark-text"
             }`}
         >
           <MessageSquare size={16} /> Direct Message
@@ -55,12 +63,16 @@ const Contact: React.FC = () => {
         <form onSubmit={handleSubmit} className="space-y-4">
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div className="space-y-1">
-              <label className="text-xs font-semibold text-gray-600 dark:text-dark-text-muted">Name</label>
+              <label className="text-xs font-semibold text-gray-600 dark:text-dark-text-muted">
+                Name
+              </label>
               <input
                 required
                 type="text"
                 value={formData.name}
-                onChange={(e) => setFormData({...formData, name: e.target.value})}
+                onChange={(e) =>
+                  setFormData({ ...formData, name: e.target.value })
+                }
                 className="w-full px-3 py-2 text-sm border rounded-md focus:outline-none focus:ring-1 focus:ring-mint-500
                            bg-white border-gray-200 text-gray-800
                            dark:bg-dark-surface-2 dark:border-dark-border dark:text-dark-text"
@@ -68,12 +80,16 @@ const Contact: React.FC = () => {
               />
             </div>
             <div className="space-y-1">
-              <label className="text-xs font-semibold text-gray-600 dark:text-dark-text-muted">Email</label>
+              <label className="text-xs font-semibold text-gray-600 dark:text-dark-text-muted">
+                Email
+              </label>
               <input
                 required
                 type="email"
                 value={formData.email}
-                onChange={(e) => setFormData({...formData, email: e.target.value})}
+                onChange={(e) =>
+                  setFormData({ ...formData, email: e.target.value })
+                }
                 className="w-full px-3 py-2 text-sm border rounded-md focus:outline-none focus:ring-1 focus:ring-mint-500
                            bg-white border-gray-200 text-gray-800
                            dark:bg-dark-surface-2 dark:border-dark-border dark:text-dark-text"
@@ -82,12 +98,16 @@ const Contact: React.FC = () => {
             </div>
           </div>
           <div className="space-y-1">
-            <label className="text-xs font-semibold text-gray-600 dark:text-dark-text-muted">Message</label>
+            <label className="text-xs font-semibold text-gray-600 dark:text-dark-text-muted">
+              Message
+            </label>
             <textarea
               required
               rows={5}
               value={formData.message}
-              onChange={(e) => setFormData({...formData, message: e.target.value})}
+              onChange={(e) =>
+                setFormData({ ...formData, message: e.target.value })
+              }
               className="w-full px-3 py-2 text-sm border rounded-md focus:outline-none focus:ring-1 focus:ring-mint-500 resize-none
                          bg-white border-gray-200 text-gray-800
                          dark:bg-dark-surface-2 dark:border-dark-border dark:text-dark-text"
@@ -104,15 +124,17 @@ const Contact: React.FC = () => {
             {status === "sending" ? "Sending..." : "Send Message"}
             <Send size={16} />
           </button>
-          
+
           {status === "success" && (
-            <p className="text-sm text-mint-600 text-center mt-2 font-medium">Message sent successfully!</p>
+            <p className="text-sm text-mint-600 text-center mt-2 font-medium">
+              Message sent successfully!
+            </p>
           )}
         </form>
       ) : (
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <a
-            href="https://t.me/yihune21" // Assuming telegram handle
+            href="https://t.me/Atie_Mb21"
             target="_blank"
             rel="noopener noreferrer"
             className="flex flex-col items-center justify-center p-8 border rounded-lg transition-all hover:-translate-y-1 hover:shadow-md
@@ -120,7 +142,9 @@ const Contact: React.FC = () => {
                        dark:bg-dark-surface dark:border-dark-border-soft"
           >
             <MessageSquare size={32} className="text-[#0088cc] mb-3" />
-            <h3 className="font-bold text-gray-800 dark:text-dark-text">Telegram</h3>
+            <h3 className="font-bold text-gray-800 dark:text-dark-text">
+              Telegram
+            </h3>
             <span className="text-xs text-gray-500 dark:text-dark-text-muted flex items-center gap-1 mt-1">
               @yihune21 <ExternalLink size={12} />
             </span>
@@ -150,7 +174,9 @@ const Contact: React.FC = () => {
               <rect x="2" y="9" width="4" height="12"></rect>
               <circle cx="4" cy="4" r="2"></circle>
             </svg>
-            <h3 className="font-bold text-gray-800 dark:text-dark-text">LinkedIn</h3>
+            <h3 className="font-bold text-gray-800 dark:text-dark-text">
+              LinkedIn
+            </h3>
             <span className="text-xs text-gray-500 dark:text-dark-text-muted flex items-center gap-1 mt-1">
               Yihune Zewdie <ExternalLink size={12} />
             </span>

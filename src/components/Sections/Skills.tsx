@@ -11,12 +11,26 @@ const skillCategories: SkillCategory[] = [
   {
     name: "Frontend",
     icon: <Terminal size={20} className="text-mint-500" />,
-    skills: ["React", "Next.js", "TypeScript", "Tailwind CSS", "HTML/CSS"],
+    skills: [
+      "React",
+      "Next.js",
+      "JavaScript/TypeScript",
+      "Tailwind CSS",
+      "HTML/CSS",
+    ],
   },
   {
     name: "Backend",
     icon: <Cpu size={20} className="text-mint-500" />,
-    skills: ["Node.js", "Express", "Python", "Django", "Golang"],
+    skills: [
+      "Node.js",
+      "Express",
+      "JavaScript/TypeScript",
+      "Python",
+      "Django",
+      "Golang",
+      "Odoo",
+    ],
   },
   {
     name: "Database & ERP",
@@ -26,7 +40,7 @@ const skillCategories: SkillCategory[] = [
   {
     name: "Tools & Others",
     icon: <Wrench size={20} className="text-mint-500" />,
-    skills: ["Git", "Docker", "RabbitMQ", "Linux"],
+    skills: ["Git", "GitHub", "GitLab", "Docker", "RabbitMQ", "Linux"],
   },
 ];
 
@@ -57,7 +71,7 @@ const Skills: React.FC = () => {
                 {category.name}
               </h3>
             </div>
-            
+
             <div className="flex flex-wrap gap-2">
               {category.skills.map((skill, idx) => (
                 <span

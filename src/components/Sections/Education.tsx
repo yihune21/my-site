@@ -1,5 +1,11 @@
 import React, { useState } from "react";
-import { GraduationCap, Landmark, Award, FileText, ExternalLink } from "lucide-react";
+import {
+  GraduationCap,
+  Landmark,
+  Award,
+  FileText,
+  ExternalLink,
+} from "lucide-react";
 
 interface EducationEntry {
   degree: string;
@@ -42,21 +48,32 @@ const educationData: EducationEntry[] = [
 
 const certificateData: CertificateEntry[] = [
   {
-    title: "AWS Certified Developer – Associate",
-    issuer: "Amazon Web Services",
+    title: "Foundations of User Experience (UX) Design",
+    issuer: "Coursera",
     date: "2024",
-    pdfUrl: "src/assets/cert_aws.pdf" // Placeholder
+    pdfUrl:
+      "https://drive.google.com/file/d/1BFdc3fe2UNKAYF3BmrvNo0XjoJ0DBugt/view", // Placeholder
   },
   {
-    title: "Advanced React Patterns",
-    issuer: "Frontend Masters",
-    date: "2025",
-    pdfUrl: "src/assets/cert_react.pdf" // Placeholder
-  }
+    title: "Introduction to DevOps",
+    issuer: "Coursera",
+    date: "2024",
+    pdfUrl:
+      "https://drive.google.com/file/d/1iKQH-NMVKLzo5eExKkVqLqmO-oXYH5Lk/view?usp=drive_link",
+  },
+  {
+    title: "Python Data Structures",
+    issuer: "Coursera",
+    date: "2024",
+    pdfUrl:
+      "https://drive.google.com/file/d/1GLOuVyPHlSnrj_Ld-MDj67VSGZRxXYQb/view?usp=drive_link",
+  },
 ];
 
 const Education: React.FC = () => {
-  const [activeTab, setActiveTab] = useState<"academic" | "certificates">("academic");
+  const [activeTab, setActiveTab] = useState<"academic" | "certificates">(
+    "academic",
+  );
 
   return (
     <section id="education" className="py-6">
@@ -65,7 +82,8 @@ const Education: React.FC = () => {
                      text-gray-700 border-gray-100
                      dark:text-dark-text dark:border-dark-border-soft"
       >
-        <GraduationCap size={18} className="text-mint-600" /> Education & Certifications
+        <GraduationCap size={18} className="text-mint-600" /> Education &
+        Certifications
       </h2>
 
       {/* Tabs */}
@@ -216,7 +234,7 @@ const Education: React.FC = () => {
                   {cert.issuer}
                 </p>
               </div>
-              
+
               {cert.pdfUrl && (
                 <div className="mt-6 pt-4 border-t border-gray-100 dark:border-dark-border-soft">
                   <a
