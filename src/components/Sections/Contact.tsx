@@ -146,7 +146,7 @@ const Contact: React.FC = () => {
               Telegram
             </h3>
             <span className="text-xs text-gray-500 dark:text-dark-text-muted flex items-center gap-1 mt-1">
-              @yihune21 <ExternalLink size={12} />
+              @Atie_Mb21 <ExternalLink size={12} />
             </span>
           </a>
           <a
