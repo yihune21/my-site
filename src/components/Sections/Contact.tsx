@@ -1,8 +1,12 @@
 import React, { useState, type FormEvent } from "react";
+import emailjs from "@emailjs/browser";
 import { Mail, MessageSquare, Send, ExternalLink } from "lucide-react";
 
 const Contact: React.FC = () => {
   const [method, setMethod] = useState<"email" | "dm">("email");
+  const serviceId = import.meta.env.VITE_SERVICE_ID;
+  const templateId = import.meta.env.VITE_TEMPLATE_ID;
+  const publicKey = import.meta.env.VITE_PUBLIC_API_KEY;
 
   const [formData, setFormData] = useState({
     name: "",
@@ -13,11 +17,10 @@ const Contact: React.FC = () => {
     "idle" | "sending" | "success" | "error"
   >("idle");
 
-  const handleSubmit = (e: FormEvent) => {
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setStatus("sending");
-    // EmailJS integration placeholder
-    // emailjs.sendForm('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', e.target, 'YOUR_PUBLIC_KEY')
+    emailjs.sendForm(serviceId, templateId, e.currentTarget, publicKey);
     setTimeout(() => {
       setStatus("success");
       setFormData({ name: "", email: "", message: "" });
@@ -67,6 +70,7 @@ const Contact: React.FC = () => {
                 Name
               </label>
               <input
+                name="namey"
                 required
                 type="text"
                 value={formData.name}
@@ -84,6 +88,7 @@ const Contact: React.FC = () => {
                 Email
               </label>
               <input
+                name="email"
                 required
                 type="email"
                 value={formData.email}
@@ -102,6 +107,7 @@ const Contact: React.FC = () => {
               Message
             </label>
             <textarea
+              name="message"
               required
               rows={5}
               value={formData.message}
