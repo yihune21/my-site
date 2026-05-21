@@ -45,7 +45,7 @@ const About: React.FC = () => {
     "React",
     "Node.js",
     "Django",
-    "Odoo"
+    "Odoo",
   ];
   const [typedText, setTypedText] = useState("");
   const [wordIndex, setWordIndex] = useState(0);
@@ -70,7 +70,7 @@ const About: React.FC = () => {
       setTypedText((prev) =>
         isDeleting
           ? currentWord.substring(0, prev.length - 1)
-          : currentWord.substring(0, prev.length + 1)
+          : currentWord.substring(0, prev.length + 1),
       );
     }, typingSpeed);
 
@@ -135,7 +135,7 @@ const About: React.FC = () => {
             <LinkedinIcon size={18} /> LinkedIn
           </a>
           <a
-            href="src/assets/resume.pdf"
+            href="https://drive.google.com/file/d/1gsZZpmnOtFvNPSWVWXCxx6t5IXf8aS0d/view?usp=sharing"
             download
             className="flex items-center gap-2 px-4 py-2 rounded-md transition-all font-sans font-medium text-sm shadow-sm
                        bg-mint-500 hover:bg-mint-600 text-white hover:shadow-md
